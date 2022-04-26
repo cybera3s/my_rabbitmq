@@ -1,6 +1,6 @@
 """
 #1: create connection and declare host/ip port
-#2: create channel
+#work_queues: create channel
 #3: declare queue and durability
 #4: define publish method and body of message with some extra properties
 #5: close connection
@@ -8,7 +8,7 @@
 import pika
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))  # 1
-ch1 = connection.channel()  # 2
+ch1 = connection.channel()  # work_queues
 
 ch1.queue_declare(queue='first', durable=True)  # 3
 message = 'Testing message'

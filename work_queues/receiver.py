@@ -1,6 +1,6 @@
 """
 #1: create connection and set host/ip and port
-#2: create channel
+#work_queues: create channel
 #3: declaring queue and durability
 #4: callback function to do a task after getting message
 #5: set manual acknowledgement of message to be sure that task is fully done
@@ -13,7 +13,7 @@ import pika
 import time
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))   # 1
-ch = connection.channel()   # 2
+ch = connection.channel()   # work_queues
 
 ch.queue_declare(queue='first', durable=True)   # 3
 print('Waiting for message, press ctrl+c to exit')
