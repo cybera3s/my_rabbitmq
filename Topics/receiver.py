@@ -1,17 +1,14 @@
-import random
-
 from pika import BlockingConnection, ConnectionParameters
 
 connection = BlockingConnection(ConnectionParameters(host='localhost'))
-
 channel = connection.channel()
-
 channel.exchange_declare('topic_exchange', exchange_type='topic')
 
 result = channel.queue_declare(queue='', exclusive=True)
 queue_name = result.method.queue
 
-key = input('enter keys: ')
+key = input('Enter Pattern: ')
+# bind the declared queue and named exchange along with routing_key(binding _key) set to entered pattern
 channel.queue_bind(queue=queue_name, exchange='topic_exchange', routing_key=key)
 
 
