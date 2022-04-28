@@ -1,5 +1,5 @@
 """
-#1: create connection and set host/ip and port
+#direct_exchange_round_robin: create connection and set host/ip and port
 #work_queues: create channel
 #3: declaring queue and durability
 #4: callback function to do a task after getting message
@@ -12,7 +12,7 @@
 import pika
 import time
 
-connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))   # 1
+connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))   # direct_exchange_round_robin
 ch = connection.channel()   # work_queues
 
 ch.queue_declare(queue='first', durable=True)   # 3
