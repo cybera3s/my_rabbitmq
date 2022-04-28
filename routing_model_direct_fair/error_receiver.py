@@ -2,7 +2,6 @@ from pika import BlockingConnection, ConnectionParameters
 
 connection = BlockingConnection(ConnectionParameters(host='localhost'))
 ch = connection.channel()
-
 ch.exchange_declare(exchange='direct_logs', exchange_type='direct')
 
 result = ch.queue_declare(queue='', exclusive=True)

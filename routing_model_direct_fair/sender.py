@@ -8,6 +8,7 @@ with connection as conn:
     channel.exchange_declare(exchange='direct_logs', exchange_type='direct')
 
     severity = ['info', 'warning', 'error']
+    # randomly pass one of severities as routing key
     msg = random.choice(severity)
     channel.basic_publish(exchange='direct_logs', routing_key=msg, body=f'log {msg}')
     print(f'{msg} Message Sent!')
